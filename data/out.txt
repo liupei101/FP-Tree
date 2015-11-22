@@ -1,0 +1,25 @@
+The minSupport is: 3
+Now the result is : 
+Now the result is : 
+Now the result is : 
+Now the result is : 
+Now the result is : 
+Now the result is : 
+The depth is : 6
+Time: 0s.
+--------------------------
+The 1 items set :
+{F } (4)
+{G } (4)
+{A } (3)
+{E } (3)
+The 2 items set :
+{G F } (4)
+{F A } (3)
+{G A } (3)
+{F E } (3)
+{G E } (3)
+The 3 items set :
+{G F A } (3)
+{G F E } (3)
+--------------------------
