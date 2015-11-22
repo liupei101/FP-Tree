@@ -247,23 +247,22 @@ public:
 			return ;
 		}
 
-		cout << "Now the result is : " << endl;
-		// if(!pattern.empty()) {
-			list<TreeNode*>::iterator _it;
-			for(_it = HeaderTable.begin();_it != HeaderTable.end();_it ++) {
-				TreeNode* node = (*_it);
-				list<string> items = pattern;
-				items.push_front(node->getName());
-				if(DEBUG) {
-					cout << node->getCount() << " : ";
-					for(list<string>::iterator I = items.begin();I != items.end();I ++) {
-						cout << (*I) << " ";
-					}
-					cout << endl;
+		if(DEBUG) cout << "Now the result is : " << endl;
+
+		list<TreeNode*>::iterator _it;
+		for(_it = HeaderTable.begin();_it != HeaderTable.end();_it ++) {
+			TreeNode* node = (*_it);
+			list<string> items = pattern;
+			items.push_front(node->getName());
+			if(DEBUG) {
+				cout << node->getCount() << " : ";
+				for(list<string>::iterator I = items.begin();I != items.end();I ++) {
+					cout << (*I) << " ";
 				}
-				resMode[modeSize ++] = make_pair(node->getCount(), items);
+				cout << endl;
 			}
-		// }
+			resMode[modeSize ++] = make_pair(node->getCount(), items);
+		}
 
 		list<TreeNode*>::iterator it;
 		for(it = HeaderTable.begin();it != HeaderTable.end();it ++) {
@@ -470,7 +469,7 @@ private:
 
 int main()
 {
-	list< list<string> > R = getTransRecordsFormFile("data\\in.txt");
+	list< list<string> > R = getTransRecordsFormFile("test\\in.txt");
 	list<string> v;
 
 	int n, mode, DEBUG;
@@ -482,7 +481,7 @@ int main()
 	cin >> mode;
 	cout << "Need DEBUG ?" << endl;
 	cin >> DEBUG;
-	if(mode == 1) freopen("data\\out.txt","w",stdout);
+	if(mode == 1) freopen("test\\out.txt","w",stdout);
 
 	FPTree* fptree = new FPTree();
 

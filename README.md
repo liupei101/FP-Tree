@@ -1,3 +1,20 @@
-# FP-Tree
-FP-Treeå®žçŽ°çš„é¢‘ç¹æ¨¡å¼æŒ–æŽ˜
-# è¯¦ç»†è¯·é˜…è¯»ReadMe.txtæ–‡ä»¶
+###FPTreeËã·¨ÊµÏÖÆµ·±Ä£Ê½ÍÚ¾ò
+
+>FPTree-V2.cppÎª¸Ä½ø°æµÄËã·¨ÊµÏÖ£¬Ê±¼äºÍ¿Õ¼äÐ§ÂÊÓÐºÜ´ó¸Ä½ø
+>ÔËÐÐ¶Ô±ÈÍ¼ - fptree.png
+
+####´¦ÀíÎÄ¼þËµÃ÷
+  1. test\\in.txtÎÄ¼þÃ¿Ò»ÐÐ²»ÒªÒÔ¿Õ¸ñ½áÎ²ÇÒ×îºóÒ»ÐÐÎª¿ÕÐÐ£¬²ÅÄÜÕý³£´¦ÀíÎÄ¼þ
+####ÔËÐÐµ¼ÒýËµÃ÷£º
+1. Input the min support:
+    ¼´ÊäÈë×îÐ¡Ö§³Ö¶È
+2. Input the mode of processing:
+    0: Run in default mode
+    1: Run in out-file mode
+    Éè¶¨Êä³ö½á¹û£¬0Ö¸Ä¬ÈÏÄ£Ê½´Ó¿ØÖÆÌ¨Êä³ö
+    1Ö¸½á¹ûÊä³öµ½ÎÄ¼þtest\\out.txt
+3. Need DEBUG ?
+    1:BEBUGÄ£Ê½ÔËÐÐ£¬»á´òÓ¡Ã¿Ò»´ÎµÝ¹éµ÷ÓÃÊ±µÄËùÓÐ      ¾ßÌåÐÅÏ¢(µ±Ç°µÝ¹éÉî¶È¡¢ÊÂÎñ¼¯¡¢ÏîÍ·¼¯£¬FPÊ÷½á¹¹¡¢ºó×ºÄ£Ê½´®¡¢Æµ·±Ä£Ê½)
+    0:²»»áÊä³öÒÔÉÏÐÅÏ¢£¬½öÊä³öËùÓÐÆµ·±Ä£Ê½£¬²¢½«×îºó½á¹û°´Ö§³Ö¶ÈÅÅÐò¡£
+
+
