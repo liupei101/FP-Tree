@@ -11,12 +11,11 @@ using namespace std;
 const int MAX_LENTH = 1000;
 const int MAX_ITEMS = 5 + 1e7;
 const char* SPLITCHAR = " ";
-/*utility function*/
-/**
-*split str according to TEMP
-*string TEMP
+
+/* 
+    Utility function 
 */
-list<string> splitStr(string str,string TEMP)
+list<string> splitStr(string str, string TEMP)
 {
     string::size_type pos;
     list<string> result;
@@ -25,21 +24,22 @@ list<string> splitStr(string str,string TEMP)
 
     for(int i = 0;i < size;i ++)
     {
-        pos = str.find(TEMP,i);
+        pos = str.find(TEMP, i);
         if(pos < size)
         {
-            string s = str.substr(i,pos-i);
+            string s = str.substr(i, pos - i);
             result.push_back(s);
             i = pos + TEMP.size() - 1;
         }
         else {
-        	string s = str.substr(i,size - i);
+        	string s = str.substr(i, size - i);
         	result.push_back(s);
         	break;
         }
     }
     return result;
 }
+
 list< pair<int,list<string> > > getTransRecordsFormFile(const char* fileName)
 {
 	list< pair<int,list<string> > > res;
@@ -50,7 +50,7 @@ list< pair<int,list<string> > > getTransRecordsFormFile(const char* fileName)
 	}
 	else {
 		char *buffer;
-		while(fgets(buffer,MAX_LENTH,f) != NULL) {
+		while(fgets(buffer, MAX_LENTH, f) != NULL) {
 			list<string> v = splitStr(buffer, SPLITCHAR);
 			res.push_back(make_pair(1,v));
 		}
@@ -58,11 +58,13 @@ list< pair<int,list<string> > > getTransRecordsFormFile(const char* fileName)
 	fclose(f);
 	return res;
 }
+
 void printRecords(list< pair<int,list<string> > > R)
 {
 	list< pair<int,list<string> > >::iterator itI;
 	list<string>:: iterator itJ;
-	for(itI = R.begin();itI != R.end();itI ++) {
+	for(itI = R.begin();itI != R.end();itI ++) 
+	{
 		cout << "(" << (*itI).first << ") ";
 		for(itJ = ((*itI).second).begin();itJ != ((*itI).second).end();itJ ++) {
 			cout << (*itJ) <<" ";
@@ -71,7 +73,9 @@ void printRecords(list< pair<int,list<string> > > R)
 	}
 }
 
-/*TreeNode class*/
+/* 
+    TreeNode class 
+*/
 class TreeNode
 {
 public:
@@ -163,7 +167,9 @@ private:
 	list<TreeNode*> *children;
 };
 
-/*sort function*/
+/*
+    sort function
+*/
 bool cmp(TreeNode* a, TreeNode* b)
 {
 	return a->getCount() > b->getCount();
@@ -186,8 +192,10 @@ bool cmpKMode(pair<int, list<string> > a, pair<int, list<string> > b)
 	}
 	return a.first > b.first;
 }
-/*FPTree class*/
 
+/* 
+    FPTree class 
+*/
 class FPTree
 {
 public:
@@ -319,11 +327,11 @@ public:
 					TreeNode* node = new TreeNode(item);
 					node->setCount(cnt);
 					mpTree[item] = node;
-					setMap(item,cnt);
+					setMap(item, cnt);
 				}
 				else {
-					( mpTree[item] )->addCountBy(cnt);
-					addMapBy(item,cnt);
+					(mpTree[item])->addCountBy(cnt);
+					addMapBy(item, cnt);
 				}
 			}
 		}
@@ -420,7 +428,7 @@ public:
 		tmp.clear();
 		return F1;
 	}
-	/*function for looking process*/
+	// function for looking process
 	void printHeaderTable(list<TreeNode*> HeaderTable)
 	{
 		list<TreeNode*>::iterator it;
@@ -481,7 +489,7 @@ public:
 	}
 private:
 	int minSupport;
-	int modeSize ;
+	int modeSize;
 	//select DEBUG mode
 	bool DEBUG;
 	//用来记录字符串出现的次数
@@ -490,7 +498,12 @@ private:
 
 int main()
 {
-	list< pair<int,list<string> > > R = getTransRecordsFormFile("test\\in.txt");
+	cout << "Input fileName:" << endl;
+	char filename[MAX_LENTH];
+	cin >> filename;
+	cout << endl;
+
+	list< pair<int,list<string> > > R = getTransRecordsFormFile(filename);
 	list<string> v;
 
 	int n, mode, DEBUG;
@@ -502,7 +515,7 @@ int main()
 	cin >> mode;
 	cout << "Need DEBUG(will print all information)?" << endl;
 	cin >> DEBUG;
-	if(mode == 1) freopen("test\\out.txt","w",stdout);
+	if(mode == 1) freopen("out.txt", "w", stdout);
 
 	FPTree* fptree = new FPTree();
 
@@ -519,7 +532,13 @@ int main()
 
 	cout << "--------------------------" << endl;
 	//print result after sorting all data
+	start = clock();
 	fptree->printAllSortedMode();
+	finish = clock();
+
+	cout << "(print All frequent item set)Time: " << (double)(finish - start) / CLOCKS_PER_SEC << "s." << endl;
+
+	cout << "--------------------------" << endl;
 	fptree->printTopKMode(10);
 
 	exit(0);
